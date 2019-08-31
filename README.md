@@ -22,8 +22,8 @@ This **Node-RED implementation** builds on the [Node-RED Tello Control](https://
 
 <table>
 <tr>
-<td><img src="screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-2.png" width="300" alt=""></td>
 <td><img src="screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-1.png" width="300" alt=""></td>
+<td><img src="screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-2.png" width="300" alt=""></td>
 </tr>
 </table>
 
@@ -40,11 +40,17 @@ There are two programs that work together to this repository:
 
 - [Install Node-RED](https://github.com/johnwalicki/Node-RED-Tello-Control/blob/master/docs/PART2.md)
 - Import the Tello Videostream Starter flow into your Node-RED editor.
-  - This flow does not have any controls to fly the drone so you will need the Tello mobile app or other [Node-RED Tello Control Dashboards](https://github.com/johnwalicki/Node-RED-Tello-Control/blob/master/docs/PART4.md)
+  - This initial [flow](flows/Node-RED-Tello-VideoStream-Starter.json) does not have any controls to fly the drone. The intent is to demonstrate capturing the video stream from the Tello before you fly it. You can hold the Tello and wave the camera around. If you want to fly and capture the stream you will need the Tello mobile app or other [Node-RED Tello Control Dashboards](https://github.com/johnwalicki/Node-RED-Tello-Control/blob/master/docs/PART4.md)
 - Launch the Node-RED Dashboard by turning to the Dashboard tab in the right menu and then click on the launch button.
 - Start the Tello Drone, connect to the Tello WiFi, and run the telloview video streaming node application.
 - In the Node-RED Dashboard, click on the **start stream** button
-  ![Node-RED Tello VideoStream Starter Dashboard](screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-Startup.png)
+
+<table>
+<tr>
+<td><img src="screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-Startup.png" width="300" alt=""></td>
+<td><img src="screenshots/Node-RED-Tello-VideoStream-Starter-Dashboard-1.png" width="300" alt=""></td>
+</tr>
+</table>
 
 As a reminder, **Safety First!**  Take caution when flying your drone. Fly your drone indoors at your own risk.
 Also, be respectful of your neighbors and public property when flying your drone outdoors.  When recording video

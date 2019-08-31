@@ -10,7 +10,7 @@ This directory contains the instructions for viewing the streaming video from a 
    ```
    $ git clone https://github.com/johnwalicki/Node-RED-DroneViewer
    ```  
-1. Change to `telloview` directory
+1. Change to the `telloview` directory
    ```
    $ cd Node-RED-DroneViewer/telloview
    ```  
