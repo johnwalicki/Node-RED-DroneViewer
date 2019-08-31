@@ -60,6 +60,7 @@ flight prohibitions.
 ### Authors
 
 - [John Walicki](https://github.com/johnwalicki/)
+- [Va Barbosa](https://github.com/vabarbosa)
 ___
 
 Enjoy!  Give us [feedback](https://github.com/johnwalicki/Node-RED-Tello-Control/issues) if you have suggestions on how to improve this tutorial.
