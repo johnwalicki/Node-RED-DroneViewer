@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <body>
+    <div style="padding: 10px;">
+      <button id="wsconnect" onclick="wsConnect()">
+        start stream
+      </button>
+      <button id="wsconnect" onclick="wsDisconnect()">
+        stop stream</button
+      ><br />
+    </div>
+
+    <div style="padding: 10px;">
+      <div id="imagewrapper" style="position:relative;display:inline-block;min-width:680px;vertical-align:top;">
+        <canvas id="video-canvas"></canvas>
+      </div>
+    </div>
+
+    <script src="js/jsmpeg.min.js"></script>
+    <script src="js/embedded.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "droneviewer-tello",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cfenv": "^1.2.2",
+    "express": "^4.17.1",
+    "ws": "^7.1.2"
+  }
+}
