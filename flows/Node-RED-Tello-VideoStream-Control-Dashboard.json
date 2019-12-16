@@ -1,0 +1,1445 @@
+[
+    {
+        "id": "d529edbd.a08d28",
+        "type": "tab",
+        "label": "Tello Video Stream Controller",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2a6a9e7c.5edc22",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "dba353c9.ee2f3"
+            ]
+        ]
+    },
+    {
+        "id": "c5c6a674.fb93e",
+        "type": "ui_template",
+        "z": "d529edbd.a08d28",
+        "group": "e236d89d.7aebc",
+        "name": "Display Tello Video Stream",
+        "order": 1,
+        "width": "14",
+        "height": "12",
+        "format": "<div ng-bind-html=\"msg.payload | trusted\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 630,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dba353c9.ee2f3",
+        "type": "template",
+        "z": "d529edbd.a08d28",
+        "name": "Create an iframe for Tello Video Stream",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<iframe src=\"http://localhost:3000\" height=590px width=700px></iframe>",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "c5c6a674.fb93e"
+            ]
+        ]
+    },
+    {
+        "id": "d589ee6e.38a408",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "Run 'npm start' in <path>/Node-RED-DroneViewer/telloview",
+        "info": "",
+        "x": 250,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e161972a.e2e708",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "git clone https://github.com/johnwalicki/Node-RED-DroneViewer.git",
+        "info": "",
+        "x": 270,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d29fe1a8.0b4fa8",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "Run 'npm install' in <path>/Node-RED-DroneViewer/telloview",
+        "info": "",
+        "x": 250,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a081f901.b96ce8",
+        "type": "udp out",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "addr": "192.168.10.1",
+        "iface": "",
+        "port": "8889",
+        "ipv": "udp4",
+        "outport": "52955",
+        "base64": false,
+        "multicast": "false",
+        "x": 580,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "97eb5264.380c9",
+        "type": "debug",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 550,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "76ed8eec.717d68",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "1 - Connect to TELLO-NNNNNN WiFi",
+        "info": "",
+        "x": 200,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b08f81d0.f1e038",
+        "type": "link in",
+        "z": "d529edbd.a08d28",
+        "name": "TelloControls-In",
+        "links": [
+            "2ddbf672.1d22a2"
+        ],
+        "x": 95,
+        "y": 380,
+        "wires": [
+            [
+                "3ef2e9c3.e344de"
+            ]
+        ]
+    },
+    {
+        "id": "a34098a1.49ba98",
+        "type": "udp in",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "iface": "",
+        "port": "52955",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 120,
+        "y": 540,
+        "wires": [
+            [
+                "fbb4f766.cfb05"
+            ]
+        ]
+    },
+    {
+        "id": "fbb4f766.cfb05",
+        "type": "debug",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 550,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7b98782.a3d0a08",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "Receive Return Strings",
+        "info": "The UDP input node listens for return values",
+        "x": 160,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "3729ad7c.4bde4a",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "================================ Send Commands to drone ==========================",
+        "info": "",
+        "x": 370,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ecb386fb.89653",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "================================ Handle incoming messages =========================",
+        "info": "",
+        "x": 370,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f5aeede4.86fe",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Land",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 660,
+        "wires": [
+            [
+                "15892fc9.521ec"
+            ]
+        ]
+    },
+    {
+        "id": "8a9dbdf1.a5e3b8",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "TakeOff",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "ce3491c6.7da778"
+            ]
+        ]
+    },
+    {
+        "id": "a0d62068.de372",
+        "type": "delay",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "250",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 130,
+        "y": 740,
+        "wires": [
+            [
+                "2056330e.7a15cc"
+            ]
+        ]
+    },
+    {
+        "id": "2056330e.7a15cc",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "TakeOff",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "takeoff",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 740,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "ce3491c6.7da778",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Init",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "command",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 700,
+        "wires": [
+            [
+                "a0d62068.de372",
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "15892fc9.521ec",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Land",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "land",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 660,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "2ddbf672.1d22a2",
+        "type": "link out",
+        "z": "d529edbd.a08d28",
+        "name": "TelloControls-Out",
+        "links": [
+            "b08f81d0.f1e038"
+        ],
+        "x": 715,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "3ef2e9c3.e344de",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "format outbound message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$exists(payload.tellovalue) ? payload.tellocmd & ' ' & payload.tellovalue : payload.tellocmd",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 380,
+        "wires": [
+            [
+                "a081f901.b96ce8",
+                "97eb5264.380c9"
+            ]
+        ]
+    },
+    {
+        "id": "4ac79b5e.84de1c",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Up 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "up",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 820,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "ae0ca34f.c6e648",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Right 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "right",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 900,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "ffd33091.f683a8",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Forward 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "forward",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 980,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "abd0c3db.4aa1d",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Down 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "down",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "f7f4fbd2.0cff18",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Left 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "left",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 940,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "5c2dd4b8.63ac7c",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Back 50cm",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "back",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "50",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 1020,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "419edbce.0de17c",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "cw 90º",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "cw",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "90",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1060,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "88f3fb86.4a394",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "ccw 90º",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "ccw",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "90",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1100,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "662c77c2.22d88",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Flip f",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "flip",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "f",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1180,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "a1efc9b0.60d96",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Up 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 120,
+        "y": 820,
+        "wires": [
+            [
+                "4ac79b5e.84de1c"
+            ]
+        ]
+    },
+    {
+        "id": "96f162fc.583eb8",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Down 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 130,
+        "y": 860,
+        "wires": [
+            [
+                "abd0c3db.4aa1d"
+            ]
+        ]
+    },
+    {
+        "id": "4d8a330b.cbd16c",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Right 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 130,
+        "y": 900,
+        "wires": [
+            [
+                "ae0ca34f.c6e648"
+            ]
+        ]
+    },
+    {
+        "id": "3ad2e4e3.f8523c",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Left 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 120,
+        "y": 940,
+        "wires": [
+            [
+                "f7f4fbd2.0cff18"
+            ]
+        ]
+    },
+    {
+        "id": "71c275c1.e01c84",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Forward 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 140,
+        "y": 980,
+        "wires": [
+            [
+                "ffd33091.f683a8"
+            ]
+        ]
+    },
+    {
+        "id": "a6e43503.e042d8",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Back 50cm",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 120,
+        "y": 1020,
+        "wires": [
+            [
+                "5c2dd4b8.63ac7c"
+            ]
+        ]
+    },
+    {
+        "id": "14f3b279.29a85e",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "cw 90º",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 1060,
+        "wires": [
+            [
+                "419edbce.0de17c"
+            ]
+        ]
+    },
+    {
+        "id": "ee6c1071.50c87",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Full 360º",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 120,
+        "y": 1140,
+        "wires": [
+            [
+                "254c030e.f84894"
+            ]
+        ]
+    },
+    {
+        "id": "9f2e18a2.1addb",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Flip forward",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 130,
+        "y": 1180,
+        "wires": [
+            [
+                "662c77c2.22d88"
+            ]
+        ]
+    },
+    {
+        "id": "7353a203.10e17c",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "ccw 90º",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 1100,
+        "wires": [
+            [
+                "88f3fb86.4a394"
+            ]
+        ]
+    },
+    {
+        "id": "254c030e.f84894",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "cw 360º",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "cw",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellovalue",
+                "pt": "msg",
+                "to": "360",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1140,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "ad1b4596.53a1d8",
+        "type": "change",
+        "z": "d529edbd.a08d28",
+        "name": "Emergency",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tellocmd",
+                "pt": "msg",
+                "to": "emergency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 780,
+        "wires": [
+            [
+                "2ddbf672.1d22a2"
+            ]
+        ]
+    },
+    {
+        "id": "1f27ddbf.b93122",
+        "type": "inject",
+        "z": "d529edbd.a08d28",
+        "name": "Emergency",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 130,
+        "y": 780,
+        "wires": [
+            [
+                "ad1b4596.53a1d8"
+            ]
+        ]
+    },
+    {
+        "id": "22fc92bf.0e1c5e",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Land",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "land",
+        "payloadType": "str",
+        "topic": "",
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "15892fc9.521ec"
+            ]
+        ]
+    },
+    {
+        "id": "e4239c36.4b1b38",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Takeoff",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 290,
+        "y": 680,
+        "wires": [
+            [
+                "ce3491c6.7da778"
+            ]
+        ]
+    },
+    {
+        "id": "22cb1af6.c62366",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 17,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Up (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-arrow-up",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 300,
+        "y": 800,
+        "wires": [
+            [
+                "4ac79b5e.84de1c"
+            ]
+        ]
+    },
+    {
+        "id": "62eac3ce.c9670c",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 18,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Down (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-arrow-down",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 310,
+        "y": 840,
+        "wires": [
+            [
+                "abd0c3db.4aa1d"
+            ]
+        ]
+    },
+    {
+        "id": "c4253e66.a5ce48",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 19,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Right (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-arrow-right",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 310,
+        "y": 880,
+        "wires": [
+            [
+                "ae0ca34f.c6e648"
+            ]
+        ]
+    },
+    {
+        "id": "f853ace6.7c6f98",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 20,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Left (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-arrow-left",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 310,
+        "y": 920,
+        "wires": [
+            [
+                "f7f4fbd2.0cff18"
+            ]
+        ]
+    },
+    {
+        "id": "92ef899.eece1f8",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 21,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Forward (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-forward",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 320,
+        "y": 960,
+        "wires": [
+            [
+                "ffd33091.f683a8"
+            ]
+        ]
+    },
+    {
+        "id": "84743af3.55fb1",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 22,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Backward (50cm)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-backward",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 330,
+        "y": 1000,
+        "wires": [
+            [
+                "5c2dd4b8.63ac7c"
+            ]
+        ]
+    },
+    {
+        "id": "337fa9cf.3c861e",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 23,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clockwise (90º)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-repeat",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 320,
+        "y": 1040,
+        "wires": [
+            [
+                "419edbce.0de17c"
+            ]
+        ]
+    },
+    {
+        "id": "57519791.98bca8",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "Counter Clockwise",
+        "group": "f13aad43.28f6d",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Anti-Clockwise (90º)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-undo",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 330,
+        "y": 1080,
+        "wires": [
+            [
+                "88f3fb86.4a394"
+            ]
+        ]
+    },
+    {
+        "id": "12c33755.bf58d9",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 25,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Full Rotation (360º)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-repeat",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 330,
+        "y": 1120,
+        "wires": [
+            [
+                "254c030e.f84894"
+            ]
+        ]
+    },
+    {
+        "id": "f269fc22.e7cbd8",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 26,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Flip (forward)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-repeat",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 310,
+        "y": 1160,
+        "wires": [
+            [
+                "662c77c2.22d88"
+            ]
+        ]
+    },
+    {
+        "id": "72e57680.e7078",
+        "type": "ui_button",
+        "z": "d529edbd.a08d28",
+        "name": "",
+        "group": "f13aad43.28f6d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Emergency Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "icon": "fa-stop-circle",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 320,
+        "y": 760,
+        "wires": [
+            [
+                "ad1b4596.53a1d8"
+            ]
+        ]
+    },
+    {
+        "id": "77f15f71.59c17",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "Send Commands",
+        "info": "This section of the flow formats the Tello command\ninto a single string to be sent to the drone.\n\nFormat is [command] [optional values]\n\nFor a list of Tello SDK commands, visit\nhttps://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf",
+        "x": 160,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c386c50e.6e60d8",
+        "type": "comment",
+        "z": "d529edbd.a08d28",
+        "name": "================================ Send Tello SDK Commands =========================",
+        "info": "For a list of Tello SDK commands, visit\nhttps://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf",
+        "x": 370,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e236d89d.7aebc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Display Tello Video Stream",
+        "tab": "ea57c2c4.a6b3f",
+        "order": 2,
+        "disp": true,
+        "width": "14",
+        "collapse": false
+    },
+    {
+        "id": "f13aad43.28f6d",
+        "type": "ui_group",
+        "z": "",
+        "name": "Control",
+        "tab": "ea57c2c4.a6b3f",
+        "order": 1,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "ea57c2c4.a6b3f",
+        "type": "ui_tab",
+        "z": "",
+        "name": "VideoStream Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
